@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premium Renovation Color Palette */
+    --background: 40 30% 98%;
+    --foreground: 30 10% 15%;
+
+    --card: 40 25% 97%;
+    --card-foreground: 30 10% 15%;
+
+    --popover: 40 30% 98%;
+    --popover-foreground: 30 10% 15%;
+
+    /* Deep Forest Green - Primary */
+    --primary: 160 35% 25%;
+    --primary-foreground: 40 30% 98%;
+
+    /* Warm Beige - Secondary */
+    --secondary: 35 30% 92%;
+    --secondary-foreground: 30 10% 20%;
+
+    /* Muted Sage */
+    --muted: 40 20% 94%;
+    --muted-foreground: 30 10% 45%;
+
+    /* Copper Accent */
+    --accent: 25 75% 55%;
+    --accent-foreground: 40 30% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 35 20% 88%;
+    --input: 35 20% 88%;
+    --ring: 160 35% 25%;
+
+    --radius: 0.5rem;
+
+    /* Custom Brand Colors */
+    --forest: 160 35% 25%;
+    --forest-light: 160 25% 35%;
+    --forest-dark: 160 40% 18%;
+    --copper: 25 75% 55%;
+    --copper-light: 25 70% 65%;
+    --copper-dark: 25 80% 45%;
+    --cream: 40 30% 98%;
+    --cream-dark: 35 25% 92%;
+    --charcoal: 30 10% 15%;
+    --charcoal-light: 30 10% 25%;
+    --warm-gray: 30 10% 45%;
+    --sand: 35 35% 85%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(160 35% 25% / 0.95), hsl(160 40% 18% / 0.9));
+    --gradient-accent: linear-gradient(135deg, hsl(25 75% 55%), hsl(25 80% 45%));
+    --gradient-card: linear-gradient(180deg, hsl(40 30% 98%), hsl(35 25% 95%));
+    --gradient-overlay: linear-gradient(180deg, transparent, hsl(30 10% 15% / 0.7));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(30 10% 15% / 0.08);
+    --shadow-medium: 0 8px 30px hsl(30 10% 15% / 0.12);
+    --shadow-strong: 0 12px 40px hsl(30 10% 15% / 0.18);
+    --shadow-glow: 0 0 40px hsl(25 75% 55% / 0.3);
+
+    --sidebar-background: 40 30% 98%;
+    --sidebar-foreground: 30 10% 25%;
+    --sidebar-primary: 160 35% 25%;
+    --sidebar-primary-foreground: 40 30% 98%;
+    --sidebar-accent: 35 30% 92%;
+    --sidebar-accent-foreground: 30 10% 20%;
+    --sidebar-border: 35 20% 88%;
+    --sidebar-ring: 160 35% 25%;
+  }
+
+  .dark {
+    --background: 30 15% 10%;
+    --foreground: 40 20% 95%;
+
+    --card: 30 12% 14%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 30 15% 10%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 160 30% 45%;
+    --primary-foreground: 30 15% 10%;
+
+    --secondary: 30 12% 18%;
+    --secondary-foreground: 40 20% 90%;
+
+    --muted: 30 12% 20%;
+    --muted-foreground: 30 15% 60%;
+
+    --accent: 25 70% 60%;
+    --accent-foreground: 30 15% 10%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 12% 22%;
+    --input: 30 12% 22%;
+    --ring: 160 30% 45%;
+
+    --forest: 160 30% 45%;
+    --forest-light: 160 25% 55%;
+    --forest-dark: 160 35% 35%;
+    --copper: 25 70% 60%;
+    --copper-light: 25 65% 70%;
+    --copper-dark: 25 75% 50%;
+    --cream: 30 15% 10%;
+    --cream-dark: 30 12% 14%;
+    --charcoal: 40 20% 95%;
+    --charcoal-light: 40 15% 85%;
+    --warm-gray: 30 15% 60%;
+    --sand: 30 12% 25%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(160 30% 45% / 0.2), hsl(30 15% 10%));
+    --gradient-overlay: linear-gradient(180deg, transparent, hsl(30 15% 5% / 0.9));
+
+    --sidebar-background: 30 12% 14%;
+    --sidebar-foreground: 40 20% 90%;
+    --sidebar-primary: 160 30% 45%;
+    --sidebar-primary-foreground: 30 15% 10%;
+    --sidebar-accent: 30 12% 20%;
+    --sidebar-accent-foreground: 40 20% 90%;
+    --sidebar-border: 30 12% 22%;
+    --sidebar-ring: 160 30% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-forest-light;
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-copper to-copper-light;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:shadow-strong hover:-translate-y-1;
+  }
+
+  .link-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .image-overlay {
+    @apply relative after:absolute after:inset-0 after:bg-gradient-overlay;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-right {
+    animation: slideRight 0.6s ease-out forwards;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
