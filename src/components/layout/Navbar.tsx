@@ -33,6 +33,7 @@ const mainLinks = [
   { name: 'Interiors', href: '/interiors', dropdown: interiorLinks },
   { name: 'Before & After', href: '/before-after' },
   { name: 'Projects', href: '/projects' },
+  { name: 'Gallery', href: '/gallery' },
   { name: 'Contact', href: '/contact' },
 ];
 

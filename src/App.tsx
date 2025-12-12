@@ -10,6 +10,7 @@ import ServiceDetailPage from "./pages/ServiceDetailPage";
 import BeforeAfterPage from "./pages/BeforeAfterPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import ContactPage from "./pages/ContactPage";
+import GalleryPage from "./pages/GalleryPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/before-after" element={<BeforeAfterPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:slug" element={<ProjectsPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<Index />} />
           <Route path="/testimonials" element={<Index />} />

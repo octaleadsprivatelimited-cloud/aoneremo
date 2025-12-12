@@ -6,6 +6,7 @@ const quickLinks = [
   { name: 'About Us', href: '/about' },
   { name: 'Our Projects', href: '/projects' },
   { name: 'Before & After', href: '/before-after' },
+  { name: 'Gallery', href: '/gallery' },
   { name: 'Testimonials', href: '/testimonials' },
   { name: 'Blog', href: '/blog' },
   { name: 'FAQs', href: '/faq' },
