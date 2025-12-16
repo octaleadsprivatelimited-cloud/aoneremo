@@ -9,10 +9,38 @@ export default function ContactPage() {
   const { toast } = useToast();
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', location: '', renovationType: '', message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: 'Message Sent!', description: 'We will contact you within 2 hours.' });
-    setFormData({ name: '', phone: '', email: '', location: '', renovationType: '', message: '' });
+    try {
+      const response = await fetch('https://formspree.io/f/myzrqkol', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: 'Contact Form Submission',
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          location: formData.location,
+          renovationType: formData.renovationType,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        toast({ title: 'Message Sent!', description: 'We will contact you within 2 hours.' });
+        setFormData({ name: '', phone: '', email: '', location: '', renovationType: '', message: '' });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      toast({ 
+        title: 'Error', 
+        description: 'Failed to send message. Please try again or contact us directly.',
+        variant: 'destructive'
+      });
+    }
   };
 
   return (
@@ -56,12 +84,13 @@ export default function ContactPage() {
             {/* Form */}
             <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-8 shadow-medium space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
-                <div><label className="block text-sm font-medium mb-2">Name *</label><input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary" /></div>
-                <div><label className="block text-sm font-medium mb-2">Phone *</label><input type="tel" required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary" /></div>
+                <div><label className="block text-sm font-medium mb-2">Name *</label><input type="text" name="name" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary" /></div>
+                <div><label className="block text-sm font-medium mb-2">Phone *</label><input type="tel" name="phone" required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary" /></div>
               </div>
-              <div><label className="block text-sm font-medium mb-2">Email</label><input type="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary" /></div>
-              <div><label className="block text-sm font-medium mb-2">Location *</label><input type="text" required value={formData.location} onChange={(e) => setFormData({...formData, location: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary" placeholder="e.g., Jubilee Hills" /></div>
-              <div><label className="block text-sm font-medium mb-2">Message</label><textarea rows={4} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary" /></div>
+              <div><label className="block text-sm font-medium mb-2">Email</label><input type="email" name="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary" /></div>
+              <div><label className="block text-sm font-medium mb-2">Location *</label><input type="text" name="location" required value={formData.location} onChange={(e) => setFormData({...formData, location: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary" placeholder="e.g., Jubilee Hills" /></div>
+              <div><label className="block text-sm font-medium mb-2">Renovation Type</label><input type="text" name="renovationType" value={formData.renovationType} onChange={(e) => setFormData({...formData, renovationType: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary" placeholder="e.g., Kitchen Renovation" /></div>
+              <div><label className="block text-sm font-medium mb-2">Message</label><textarea name="message" rows={4} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary" /></div>
               <Button type="submit" variant="hero" size="lg" className="w-full">Submit Enquiry <Send className="h-5 w-5" /></Button>
             </form>
           </div>

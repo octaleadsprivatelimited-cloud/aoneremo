@@ -34,20 +34,46 @@ export function EnquiryFormSection() {
     budget: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would submit to a backend
-    toast({
-      title: 'Enquiry Submitted!',
-      description: 'Our team will contact you within 2 hours.',
-    });
-    setFormData({
-      name: '',
-      phone: '',
-      location: '',
-      renovationType: '',
-      budget: '',
-    });
+    try {
+      const response = await fetch('https://formspree.io/f/myzrqkol', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: 'Enquiry Form Submission',
+          name: formData.name,
+          phone: formData.phone,
+          location: formData.location,
+          renovationType: formData.renovationType,
+          budget: formData.budget,
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: 'Enquiry Submitted!',
+          description: 'Our team will contact you within 2 hours.',
+        });
+        setFormData({
+          name: '',
+          phone: '',
+          location: '',
+          renovationType: '',
+          budget: '',
+        });
+      } else {
+        throw new Error('Failed to submit enquiry');
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Failed to submit enquiry. Please try again or contact us directly.',
+        variant: 'destructive',
+      });
+    }
   };
 
   return (
@@ -94,6 +120,7 @@ export function EnquiryFormSection() {
                   <label className="block text-sm font-medium mb-2">Your Name *</label>
                   <input
                     type="text"
+                    name="name"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -105,6 +132,7 @@ export function EnquiryFormSection() {
                   <label className="block text-sm font-medium mb-2">Phone Number *</label>
                   <input
                     type="tel"
+                    name="phone"
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -118,6 +146,7 @@ export function EnquiryFormSection() {
                 <label className="block text-sm font-medium mb-2">Location / Area *</label>
                 <input
                   type="text"
+                  name="location"
                   required
                   value={formData.location}
                   onChange={(e) => setFormData({ ...formData, location: e.target.value })}
@@ -129,6 +158,7 @@ export function EnquiryFormSection() {
               <div>
                 <label className="block text-sm font-medium mb-2">Renovation Type *</label>
                 <select
+                  name="renovationType"
                   required
                   value={formData.renovationType}
                   onChange={(e) => setFormData({ ...formData, renovationType: e.target.value })}
@@ -144,6 +174,7 @@ export function EnquiryFormSection() {
               <div>
                 <label className="block text-sm font-medium mb-2">Budget Range</label>
                 <select
+                  name="budget"
                   value={formData.budget}
                   onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                   className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"

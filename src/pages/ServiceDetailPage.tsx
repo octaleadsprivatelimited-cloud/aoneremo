@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { MainLayout } from '@/components/layout/MainLayout';
 import { SectionHeader } from '@/components/common/SectionHeader';
@@ -5,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { renovationServices, interiorServices, Service } from '@/data/services';
 import { BRAND } from '@/config/brand';
 import { Phone, MessageCircle, CheckCircle, Clock, ArrowRight } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 import {
   Accordion,
   AccordionContent,
@@ -14,11 +16,19 @@ import {
 
 export default function ServiceDetailPage() {
   const { slug } = useParams();
+  const { toast } = useToast();
   const path = window.location.pathname;
   const isInteriors = path.startsWith('/interiors');
   
   const services = isInteriors ? interiorServices : renovationServices;
   const service = services.find(s => s.slug === slug);
+  
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    projectDetails: '',
+  });
   
   if (!service) {
     return (
@@ -36,6 +46,47 @@ export default function ServiceDetailPage() {
   }
 
   const otherServices = services.filter(s => s.id !== service.id).slice(0, 3);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('https://formspree.io/f/myzrqkol', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: `Service Quote Request - ${service.title}`,
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          projectDetails: formData.projectDetails,
+          service: service.title,
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: 'Enquiry Submitted!',
+          description: 'We will contact you within 24 hours.',
+        });
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          projectDetails: '',
+        });
+      } else {
+        throw new Error('Failed to submit enquiry');
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Failed to submit enquiry. Please try again or contact us directly.',
+        variant: 'destructive',
+      });
+    }
+  };
 
   return (
     <MainLayout>
@@ -134,12 +185,15 @@ export default function ServiceDetailPage() {
                 <h3 className="font-display text-2xl font-bold">Get Free Quote</h3>
                 <p className="text-primary-foreground/80 mt-2">Fill the form and we'll get back to you within 24 hours</p>
               </div>
-              <form className="p-6 space-y-4">
+              <form onSubmit={handleSubmit} className="p-6 space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">Your Name *</label>
                   <input 
-                    type="text" 
+                    type="text"
+                    name="name"
                     required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Enter your full name"
                     className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-foreground placeholder:text-muted-foreground"
                   />
@@ -147,8 +201,11 @@ export default function ServiceDetailPage() {
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">Phone Number *</label>
                   <input 
-                    type="tel" 
+                    type="tel"
+                    name="phone"
                     required
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="Enter your phone number"
                     className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-foreground placeholder:text-muted-foreground"
                   />
@@ -156,7 +213,10 @@ export default function ServiceDetailPage() {
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">Email Address</label>
                   <input 
-                    type="email" 
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="Enter your email"
                     className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-foreground placeholder:text-muted-foreground"
                   />
@@ -164,7 +224,10 @@ export default function ServiceDetailPage() {
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">Project Details</label>
                   <textarea 
+                    name="projectDetails"
                     rows={3}
+                    value={formData.projectDetails}
+                    onChange={(e) => setFormData({ ...formData, projectDetails: e.target.value })}
                     placeholder="Tell us about your project requirements..."
                     className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-foreground placeholder:text-muted-foreground resize-none"
                   />
