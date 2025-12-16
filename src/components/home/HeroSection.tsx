@@ -7,33 +7,39 @@ import { BRAND, getWhatsAppLink } from '@/config/brand';
 export function HeroSection() {
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-secondary via-background to-cream-dark" />
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-      </div>
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/hero-background.mp4" type="video/mp4" />
+      </video>
+      
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/60 z-[1]"></div>
 
       <div className="container-custom relative z-10 py-12 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Content */}
-          <div className="text-center lg:text-left animate-fade-up">
-            <span className="inline-block px-4 py-2 bg-accent/10 text-accent text-sm font-semibold rounded-full mb-6">
+          <div className="text-center lg:text-left animate-fade-up text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            <span className="inline-block px-4 py-2 bg-accent/20 text-white text-sm font-semibold rounded-full mb-6">
               #1 Renovation Experts in {BRAND.CITY}
             </span>
             
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+            <h1 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-4">
               Premium Home{' '}
-              <span className="text-primary">Renovation</span>{' '}
+              <span className="text-orange-400">Renovation</span>{' '}
               Experts in {BRAND.CITY}
             </h1>
             
-            <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-xl mx-auto lg:mx-0">
+            <p className="text-lg md:text-xl text-white/80 mb-4 max-w-xl mx-auto lg:mx-0">
               Kitchen • Bathroom • Full Home • Commercial
             </p>
             
-            <p className="text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0">
+            <p className="text-white/80 mb-8 max-w-xl mx-auto lg:mx-0">
               Transform your space with our expert renovation services. From concept to completion, 
               we deliver exceptional quality with transparent pricing and on-time delivery.
             </p>
@@ -41,16 +47,16 @@ export function HeroSection() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 mb-8 max-w-md mx-auto lg:mx-0">
               <div className="text-center lg:text-left">
-                <p className="font-display text-3xl font-bold text-primary">{BRAND.STATS.PROJECTS}</p>
-                <p className="text-sm text-muted-foreground">Projects Done</p>
+                <p className="font-display text-3xl font-bold text-orange-400">{BRAND.STATS.PROJECTS}</p>
+                <p className="text-sm text-white/80">Projects Done</p>
               </div>
               <div className="text-center lg:text-left">
-                <p className="font-display text-3xl font-bold text-primary">{BRAND.STATS.SATISFACTION}</p>
-                <p className="text-sm text-muted-foreground">Quality Assured</p>
+                <p className="font-display text-3xl font-bold text-orange-400">{BRAND.STATS.SATISFACTION}</p>
+                <p className="text-sm text-white/80">Quality Assured</p>
               </div>
               <div className="text-center lg:text-left">
-                <p className="font-display text-3xl font-bold text-primary">{BRAND.STATS.EXPERIENCE}</p>
-                <p className="text-sm text-muted-foreground">Years Experience</p>
+                <p className="font-display text-3xl font-bold text-orange-400">{BRAND.STATS.EXPERIENCE}</p>
+                <p className="text-sm text-white/80">Years Experience</p>
               </div>
             </div>
 
@@ -71,15 +77,15 @@ export function HeroSection() {
 
             {/* Trust Badges */}
             <div className="flex flex-wrap items-center gap-4 mt-8 justify-center lg:justify-start">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2 text-sm text-white/80">
                 <CheckCircle className="h-5 w-5 text-primary" />
                 3D Design Preview
               </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2 text-sm text-white/80">
                 <CheckCircle className="h-5 w-5 text-primary" />
                 Same-Day Quote
               </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2 text-sm text-white/80">
                 <CheckCircle className="h-5 w-5 text-primary" />
                 Premium Materials
               </div>
