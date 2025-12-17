@@ -48,33 +48,20 @@ export function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-      {/* Top Bar */}
-      <div className="bg-primary text-primary-foreground py-2">
-        <div className="container-custom flex justify-between items-center text-sm">
-          <span className="hidden sm:block">{BRAND.TAGLINE}</span>
-          <div className="flex items-center gap-4 mx-auto sm:mx-0">
-            <a href={`tel:${BRAND.PHONE}`} className="flex items-center gap-2 hover:text-accent transition-colors">
-              <Phone className="h-4 w-4" />
-              {BRAND.PHONE}
-            </a>
-          </div>
-        </div>
-      </div>
-
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm border-b border-transparent">
       {/* Main Nav */}
-      <nav className="container-custom">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+      <nav className="container-custom py-0">
+        <div className="flex items-center justify-between h-12">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-xl">A</span>
+          <Link to="/" className="flex items-center gap-1.5">
+            <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center shadow-lg">
+              <span className="text-primary-foreground font-display font-bold text-sm">A</span>
             </div>
-            <div className="flex flex-col">
-              <span className="font-display font-bold text-lg text-foreground leading-none">
+            <div className="flex flex-col leading-tight">
+              <span className="font-display font-bold text-xs leading-none text-gray-900 drop-shadow-lg">
                 {BRAND.COMPANY_NAME.split(' ')[0]}
               </span>
-              <span className="text-xs text-muted-foreground">Renovations & Interiors</span>
+              <span className="text-[9px] text-gray-700 drop-shadow-lg leading-none">Renovations & Interiors</span>
             </div>
           </Link>
 
@@ -90,10 +77,10 @@ export function Navbar() {
                 <Link
                   to={link.href}
                   className={cn(
-                    'px-4 py-2 text-sm font-medium transition-colors flex items-center gap-1 rounded-md',
+                    'px-2 py-0.5 text-xs font-medium transition-colors flex items-center gap-1 rounded-md text-gray-900 drop-shadow-lg',
                     isActive(link.href)
-                      ? 'text-primary bg-secondary'
-                      : 'text-foreground hover:text-primary hover:bg-secondary'
+                      ? 'text-orange-400 bg-white/10'
+                      : 'hover:text-orange-400 hover:bg-white/10'
                   )}
                 >
                   {link.name}
@@ -102,16 +89,16 @@ export function Navbar() {
 
                 {/* Dropdown */}
                 {link.dropdown && activeDropdown === link.name && (
-                  <div className="absolute top-full left-0 w-64 bg-background border border-border rounded-lg shadow-strong py-2 animate-fade-in">
+                  <div className="absolute top-full left-0 w-64 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-lg shadow-strong py-2 animate-fade-in">
                     {link.dropdown.map((subLink) => (
                       <Link
                         key={subLink.name}
                         to={subLink.href}
                         className={cn(
-                          'block px-4 py-2.5 text-sm transition-colors',
+                          'block px-4 py-2.5 text-sm transition-colors text-gray-900',
                           location.pathname === subLink.href
-                            ? 'text-primary bg-secondary'
-                            : 'text-foreground hover:text-primary hover:bg-secondary'
+                            ? 'text-orange-400 bg-gray-100'
+                            : 'hover:text-orange-400 hover:bg-gray-100'
                         )}
                       >
                         {subLink.name}
@@ -124,11 +111,11 @@ export function Navbar() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Button variant="forest-outline" size="sm" asChild>
+          <div className="hidden lg:flex items-center gap-2">
+            <Button variant="forest-outline" size="sm" className="h-7 px-3 text-xs" asChild>
               <Link to="/contact">Get Quote</Link>
             </Button>
-            <Button variant="whatsapp" size="sm" asChild>
+            <Button variant="whatsapp" size="sm" className="h-7 px-3 text-xs" asChild>
               <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
                 WhatsApp Us
               </a>
@@ -137,7 +124,7 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2"
+            className="lg:hidden p-2 text-gray-900 drop-shadow-lg"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -147,17 +134,17 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden py-4 border-t border-border animate-fade-in">
+          <div className="lg:hidden py-4 border-t border-gray-200 bg-white/95 backdrop-blur-sm text-gray-900 animate-fade-in">
             <div className="flex flex-col gap-1">
               {mainLinks.map((link) => (
                 <div key={link.name}>
                   <Link
                     to={link.href}
                     className={cn(
-                      'block px-4 py-3 text-sm font-medium transition-colors rounded-md',
+                      'block px-4 py-3 text-sm font-medium transition-colors rounded-md text-gray-900',
                       isActive(link.href)
-                        ? 'text-primary bg-secondary'
-                        : 'text-foreground hover:text-primary hover:bg-secondary'
+                        ? 'text-orange-400 bg-gray-100'
+                        : 'hover:text-orange-400 hover:bg-gray-100'
                     )}
                     onClick={() => !link.dropdown && setIsOpen(false)}
                   >
@@ -169,7 +156,7 @@ export function Navbar() {
                         <Link
                           key={subLink.name}
                           to={subLink.href}
-                          className="block px-4 py-2 text-sm text-muted-foreground hover:text-primary"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:text-orange-400"
                           onClick={() => setIsOpen(false)}
                         >
                           {subLink.name}
@@ -180,7 +167,7 @@ export function Navbar() {
                 </div>
               ))}
             </div>
-            <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-border">
+            <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-gray-200">
               <Button variant="forest" asChild>
                 <Link to="/contact" onClick={() => setIsOpen(false)}>Get Free Quote</Link>
               </Button>
