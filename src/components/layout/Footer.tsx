@@ -188,7 +188,15 @@ export function Footer() {
       <div className="border-t border-primary-foreground/10 relative z-10">
         <div className="container-custom py-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-primary-foreground/70">
-            © {currentYear} {BRAND.COMPANY_NAME}. All rights reserved.
+            © {currentYear} {BRAND.COMPANY_NAME}. All rights reserved. | Developed by{' '}
+            <a 
+              href="https://octaleads.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors"
+            >
+              Octaleads Private Limited
+            </a>
           </p>
           <div className="flex items-center gap-6 text-sm text-primary-foreground/70">
             <Link to="/privacy" className="hover:text-accent transition-colors">Privacy Policy</Link>
