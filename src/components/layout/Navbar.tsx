@@ -51,18 +51,14 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm border-b border-transparent">
       {/* Main Nav */}
       <nav className="container-custom py-0">
-        <div className="flex items-center justify-between h-12">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-1.5">
-            <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center shadow-lg">
-              <span className="text-primary-foreground font-display font-bold text-sm">A</span>
-            </div>
-            <div className="flex flex-col leading-tight">
-              <span className="font-display font-bold text-xs leading-none text-gray-900 drop-shadow-lg">
-                {BRAND.COMPANY_NAME.split(' ')[0]}
-              </span>
-              <span className="text-[9px] text-gray-700 drop-shadow-lg leading-none">Renovations & Interiors</span>
-            </div>
+          <Link to="/" className="flex items-center h-full py-1">
+            <img 
+              src="/logo.png" 
+              alt={BRAND.COMPANY_NAME}
+              className="h-20 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}

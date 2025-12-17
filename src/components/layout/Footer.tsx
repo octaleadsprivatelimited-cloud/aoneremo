@@ -52,16 +52,12 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-6">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-                  <span className="text-accent-foreground font-display font-bold text-xl">A</span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-display font-bold text-lg leading-none">
-                    {BRAND.COMPANY_NAME.split(' ')[0]}
-                  </span>
-                  <span className="text-xs text-primary-foreground/70">Renovations & Interiors</span>
-                </div>
+              <div className="mb-4">
+                <img 
+                  src="/logo.png" 
+                  alt={BRAND.COMPANY_NAME}
+                  className="h-24 w-auto object-contain"
+                />
               </div>
               <p className="text-primary-foreground/80 text-sm leading-relaxed">
                 {BRAND.TAGLINE}. Premium renovation and interior design services in {BRAND.CITY} with 15+ years of experience.
