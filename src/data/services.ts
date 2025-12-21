@@ -86,7 +86,7 @@ export const renovationServices: Service[] = [
       },
       {
         question: 'What brands do you use for fittings?',
-        answer: 'We partner with premium brands like Jaquar, Kohler, Hafele, and Hettich for all fittings and hardware.',
+        answer: 'We partner with premium brands like Jaquar, Kohler, Finolex, and Treelab for all fittings and hardware.',
       },
     ],
   },

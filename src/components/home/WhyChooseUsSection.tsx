@@ -10,7 +10,7 @@ const reasons = [
   {
     icon: Palette,
     title: 'Premium Materials',
-    description: 'We use only the best brands - Asian Paints, Jaquar, Havells, Hettich, and more.',
+    description: 'We use only the best brands - Asian Paints, Jaquar, Havells, Finolex, and more.',
   },
   {
     icon: Clock,
@@ -68,7 +68,7 @@ export function WhyChooseUsSection() {
         <div className="mt-16 pt-12 border-t border-border">
           <p className="text-center text-muted-foreground mb-8">Trusted brands we work with</p>
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-60">
-            {['Asian Paints', 'Jaquar', 'Havells', 'Hettich', 'Kohler', 'Kajaria'].map((brand) => (
+            {['Asian Paints', 'Jaquar', 'Havells', 'Finolex', 'Kohler', 'Kajaria'].map((brand) => (
               <span key={brand} className="font-display font-semibold text-lg text-foreground">
                 {brand}
               </span>

@@ -178,8 +178,19 @@ export default function AboutPage() {
       </section>
 
       {/* Process Snapshot */}
-      <section className="py-12 md:py-16 lg:py-20">
-        <div className="container-custom">
+      <section className="py-12 md:py-16 lg:py-20 relative overflow-hidden">
+        {/* Subtle background with diagonal accent */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/10 to-background" />
+        
+        {/* Diagonal accent line */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        
+        {/* Corner accent elements */}
+        <div className="absolute top-0 right-0 w-32 h-32 border-t-2 border-r-2 border-primary/10" />
+        <div className="absolute bottom-0 left-0 w-32 h-32 border-b-2 border-l-2 border-accent/10" />
+        
+        <div className="container-custom relative z-10">
           <SectionHeader
             badge="How We Work"
             title="A simple, transparent 4-step process"

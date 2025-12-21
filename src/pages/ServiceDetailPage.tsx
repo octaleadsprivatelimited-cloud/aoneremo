@@ -253,7 +253,7 @@ export default function ServiceDetailPage() {
             subtitle="We partner with industry-leading brands to ensure quality and durability."
           />
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {['Asian Paints', 'Jaquar', 'Kohler', 'Hettich', 'Hafele', 'Havells', 'Kajaria', 'Somany', 'Greenlam', 'Century'].map((brand) => (
+            {['Asian Paints', 'Jaquar', 'Kohler', 'Finolex', 'Treelab', 'Havells', 'Kajaria', 'Somany', 'HDMHR', 'Century'].map((brand) => (
               <div key={brand} className="bg-card p-6 rounded-xl text-center border border-border hover:border-accent transition-colors">
                 <span className="font-semibold text-foreground">{brand}</span>
               </div>

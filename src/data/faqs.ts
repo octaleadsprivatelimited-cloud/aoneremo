@@ -33,7 +33,7 @@ export const faqs: FAQ[] = [
   {
     id: '5',
     question: 'What brands do you use for materials?',
-    answer: 'We partner with premium brands: Asian Paints & Berger for paints, Kajaria & Johnson for tiles, Jaquar & Kohler for sanitaryware, Hettich & Hafele for hardware, Havells for electricals, and Greenply for plywood.',
+    answer: 'We partner with premium brands: Asian Paints & Berger for paints, Kajaria & Johnson for tiles, Jaquar & Kohler for sanitaryware, Finolex & Treelab for hardware, Havells for electricals, and Greenply for plywood.',
     category: 'materials',
   },
   {
