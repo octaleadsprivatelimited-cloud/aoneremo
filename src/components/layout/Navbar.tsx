@@ -40,6 +40,7 @@ const mainLinks = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
   const location = useLocation();
 
   const isActive = (href: string) => {
@@ -121,7 +122,12 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             className="lg:hidden p-2 text-gray-900 drop-shadow-lg"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => {
+              setIsOpen(!isOpen);
+              if (isOpen) {
+                setMobileDropdownOpen(null);
+              }
+            }}
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -134,31 +140,70 @@ export function Navbar() {
             <div className="flex flex-col gap-1">
               {mainLinks.map((link) => (
                 <div key={link.name}>
-                  <Link
-                    to={link.href}
-                    className={cn(
-                      'block px-4 py-3 text-sm font-medium transition-colors rounded-md text-gray-900',
-                      isActive(link.href)
-                        ? 'text-orange-400 bg-gray-100'
-                        : 'hover:text-orange-400 hover:bg-gray-100'
-                    )}
-                    onClick={() => !link.dropdown && setIsOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
-                  {link.dropdown && (
-                    <div className="pl-4 space-y-1 mt-1">
-                      {link.dropdown.slice(1).map((subLink) => (
+                  {link.dropdown ? (
+                    <>
+                      <div className="flex items-center justify-between">
                         <Link
-                          key={subLink.name}
-                          to={subLink.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:text-orange-400"
+                          to={link.href}
+                          className={cn(
+                            'flex-1 block px-4 py-3 text-sm font-medium transition-colors rounded-md text-gray-900',
+                            isActive(link.href)
+                              ? 'text-orange-400 bg-gray-100'
+                              : 'hover:text-orange-400 hover:bg-gray-100'
+                          )}
                           onClick={() => setIsOpen(false)}
                         >
-                          {subLink.name}
+                          {link.name}
                         </Link>
-                      ))}
-                    </div>
+                        <button
+                          onClick={() => setMobileDropdownOpen(mobileDropdownOpen === link.name ? null : link.name)}
+                          className={cn(
+                            'px-4 py-3 text-sm font-medium transition-colors rounded-md text-gray-900',
+                            isActive(link.href)
+                              ? 'text-orange-400 bg-gray-100'
+                              : 'hover:text-orange-400 hover:bg-gray-100'
+                          )}
+                          aria-label={`Toggle ${link.name} menu`}
+                        >
+                          <ChevronDown
+                            className={cn(
+                              'h-4 w-4 transition-transform',
+                              mobileDropdownOpen === link.name && 'rotate-180'
+                            )}
+                          />
+                        </button>
+                      </div>
+                      {mobileDropdownOpen === link.name && (
+                        <div className="pl-4 space-y-1 mt-1 animate-fade-in">
+                          {link.dropdown.map((subLink) => (
+                            <Link
+                              key={subLink.name}
+                              to={subLink.href}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:text-orange-400 transition-colors"
+                              onClick={() => {
+                                setIsOpen(false);
+                                setMobileDropdownOpen(null);
+                              }}
+                            >
+                              {subLink.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className={cn(
+                        'block px-4 py-3 text-sm font-medium transition-colors rounded-md text-gray-900',
+                        isActive(link.href)
+                          ? 'text-orange-400 bg-gray-100'
+                          : 'hover:text-orange-400 hover:bg-gray-100'
+                      )}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
                   )}
                 </div>
               ))}
