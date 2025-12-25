@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { MainLayout } from '@/components/layout/MainLayout';
 import { Button } from '@/components/ui/button';
+import { SEO } from '@/components/common/SEO';
 import { Send, Phone, MapPin, Mail } from 'lucide-react';
 import { BRAND, getWhatsAppLink } from '@/config/brand';
 import { useToast } from '@/hooks/use-toast';
@@ -8,6 +9,26 @@ import { useToast } from '@/hooks/use-toast';
 export default function ContactPage() {
   const { toast } = useToast();
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', location: '', renovationType: '', message: '' });
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": `Contact ${BRAND.COMPANY_NAME}`,
+    "description": `Contact ${BRAND.COMPANY_NAME} for premium home renovation and interior design services in ${BRAND.CITY}`,
+    "url": `${BRAND.WEBSITE}/contact`,
+    "mainEntity": {
+      "@type": "Organization",
+      "name": BRAND.COMPANY_NAME,
+      "telephone": BRAND.PHONE,
+      "email": BRAND.EMAIL,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": BRAND.ADDRESS.split(',')[0],
+        "addressLocality": BRAND.CITY,
+        "addressCountry": "IN"
+      }
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,6 +66,12 @@ export default function ContactPage() {
 
   return (
     <MainLayout>
+      <SEO
+        title={`Contact ${BRAND.COMPANY_NAME} - Get Free Quote for Home Renovation in ${BRAND.CITY}`}
+        description={`Contact ${BRAND.COMPANY_NAME} for free consultation and quote. Phone: ${BRAND.PHONE}, Email: ${BRAND.EMAIL}. Located in ${BRAND.CITY}. Get expert advice on home renovation and interior design.`}
+        keywords={['contact aonereno', 'free quote', 'renovation consultation', 'contact renovation company']}
+        structuredData={structuredData}
+      />
       <section 
         className="relative text-primary-foreground py-20"
         style={{

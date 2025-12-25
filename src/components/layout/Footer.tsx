@@ -47,16 +47,16 @@ export function Footer() {
       <div className="absolute inset-0 bg-primary/60"></div>
       
       {/* Main Footer */}
-      <div className="container-custom py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="container-custom py-10 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             <div>
-              <div className="mb-4">
+              <div className="mb-3">
                 <img 
                   src="/logo.png" 
                   alt={BRAND.COMPANY_NAME}
-                  className="h-24 w-auto object-contain"
+                  className="h-16 w-auto object-contain"
                 />
               </div>
               <p className="text-primary-foreground/80 text-sm leading-relaxed">
@@ -65,7 +65,7 @@ export function Footer() {
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-3">
+            <div className="space-y-2">
               <a
                 href={`tel:${BRAND.PHONE}`}
                 className="flex items-center gap-3 text-sm hover:text-accent transition-colors"
@@ -130,8 +130,8 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-6">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="font-display font-semibold text-lg mb-4">Quick Links</h4>
+            <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
@@ -147,8 +147,8 @@ export function Footer() {
 
           {/* Renovation Services */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-6">Renovation Services</h4>
-            <ul className="space-y-3">
+            <h4 className="font-display font-semibold text-lg mb-4">Renovation Services</h4>
+            <ul className="space-y-2">
               {renovationLinks.map((link) => (
                 <li key={link.name}>
                   <Link
@@ -164,8 +164,8 @@ export function Footer() {
 
           {/* Interior Services */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-6">Interior Design</h4>
-            <ul className="space-y-3">
+            <h4 className="font-display font-semibold text-lg mb-4">Interior Design</h4>
+            <ul className="space-y-2">
               {interiorLinks.map((link) => (
                 <li key={link.name}>
                   <Link
@@ -179,8 +179,8 @@ export function Footer() {
             </ul>
 
             {/* Service Area */}
-            <div className="mt-8">
-              <h5 className="font-semibold mb-3">Service Areas</h5>
+            <div className="mt-6">
+              <h5 className="font-semibold mb-2">Service Areas</h5>
               <p className="text-sm text-primary-foreground/80">
                 Jubilee Hills, Banjara Hills, Gachibowli, Madhapur, Kondapur, Hitech City, Kukatpally & all of Hyderabad
               </p>
@@ -191,7 +191,7 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-primary-foreground/10 relative z-10">
-        <div className="container-custom py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="container-custom py-4 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-primary-foreground/70">
             © {currentYear} {BRAND.COMPANY_NAME}. All rights reserved. | Developed by{' '}
             <a 

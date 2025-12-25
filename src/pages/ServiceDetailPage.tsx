@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { MainLayout } from '@/components/layout/MainLayout';
 import { SectionHeader } from '@/components/common/SectionHeader';
+import { SEO } from '@/components/common/SEO';
 import { Button } from '@/components/ui/button';
 import { renovationServices, interiorServices, Service } from '@/data/services';
 import { BRAND } from '@/config/brand';
@@ -88,8 +89,33 @@ export default function ServiceDetailPage() {
     }
   };
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": service.title,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": BRAND.COMPANY_NAME,
+      "telephone": BRAND.PHONE,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": BRAND.CITY,
+        "addressCountry": "IN"
+      }
+    },
+    "areaServed": BRAND.CITY,
+    "description": service.description
+  };
+
   return (
     <MainLayout>
+      <SEO
+        title={`${service.title} Services in ${BRAND.CITY} | ${BRAND.COMPANY_NAME}`}
+        description={service.shortDescription || service.description}
+        keywords={[service.title.toLowerCase(), 'renovation', 'interior design', BRAND.CITY.toLowerCase()]}
+        image={service.image}
+        structuredData={structuredData}
+      />
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px]">
         <div className="absolute inset-0">

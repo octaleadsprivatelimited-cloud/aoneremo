@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { MainLayout } from '@/components/layout/MainLayout';
 import { BeforeAfterSlider } from '@/components/common/BeforeAfterSlider';
+import { SEO } from '@/components/common/SEO';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { BRAND } from '@/config/brand';
@@ -17,6 +18,11 @@ const beforeAfterItems = [
 export default function BeforeAfterPage() {
   return (
     <MainLayout>
+      <SEO
+        title={`Before & After Gallery - Home Renovation Transformations in ${BRAND.CITY}`}
+        description={`Witness stunning before and after transformations in ${BRAND.CITY}. View our renovation projects including kitchen, bathroom, living room, and full home renovations. Slide to compare dramatic results.`}
+        keywords={['before after', 'home transformation', 'renovation results', 'before after gallery', 'renovation transformation']}
+      />
       <section 
         className="relative text-primary-foreground py-20"
         style={{

@@ -7,13 +7,31 @@ import { WhyChooseUsSection } from '@/components/home/WhyChooseUsSection';
 import { TestimonialsSection } from '@/components/home/TestimonialsSection';
 import { ProcessSection } from '@/components/home/ProcessSection';
 import { EnquiryFormSection } from '@/components/home/EnquiryFormSection';
+import { SEO } from '@/components/common/SEO';
 import { BRAND } from '@/config/brand';
 
 const Index = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": BRAND.COMPANY_NAME,
+    "url": BRAND.WEBSITE,
+    "description": `Premium home renovation and interior design services in ${BRAND.CITY}`,
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": `${BRAND.WEBSITE}/search?q={search_term_string}`,
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   return (
     <MainLayout>
-      {/* SEO Meta */}
-      <title>{`Premium Home Renovation in ${BRAND.CITY} | ${BRAND.COMPANY_NAME}`}</title>
+      <SEO
+        title={`Premium Home Renovation & Interior Design Services in ${BRAND.CITY}`}
+        description={`${BRAND.COMPANY_NAME} offers premium home renovation and interior design services in ${BRAND.CITY}. Kitchen renovation, bathroom renovation, full home renovation, modular kitchen, office renovation, and more. ${BRAND.STATS.PROJECTS} projects completed. Get free quote today!`}
+        keywords={['home renovation', 'interior design', 'kitchen renovation', 'bathroom renovation']}
+        structuredData={structuredData}
+      />
       
       <HeroSection />
       <ServicesSection />

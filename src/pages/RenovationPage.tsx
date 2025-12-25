@@ -2,12 +2,18 @@ import { Link } from 'react-router-dom';
 import { MainLayout } from '@/components/layout/MainLayout';
 import { SectionHeader } from '@/components/common/SectionHeader';
 import { ServiceCard } from '@/components/common/ServiceCard';
+import { SEO } from '@/components/common/SEO';
 import { renovationServices } from '@/data/services';
 import { BRAND } from '@/config/brand';
 
 export default function RenovationPage() {
   return (
     <MainLayout>
+      <SEO
+        title={`Premium Renovation Services in ${BRAND.CITY}`}
+        description={`Professional renovation services in ${BRAND.CITY}. Kitchen renovation, bathroom renovation, full home renovation, office renovation, commercial renovation, flooring, painting, and more. Expert craftsmanship with premium materials.`}
+        keywords={['renovation services', 'home renovation', 'kitchen renovation', 'bathroom renovation', 'full home renovation', 'office renovation']}
+      />
       {/* Hero */}
       <section 
         className="relative text-primary-foreground py-20"

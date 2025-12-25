@@ -1,11 +1,17 @@
 import { MainLayout } from '@/components/layout/MainLayout';
 import { ProjectCard } from '@/components/common/ProjectCard';
+import { SEO } from '@/components/common/SEO';
 import { projects } from '@/data/projects';
 import { BRAND } from '@/config/brand';
 
 export default function ProjectsPage() {
   return (
     <MainLayout>
+      <SEO
+        title={`Our Projects - Completed Renovation & Interior Design Projects in ${BRAND.CITY}`}
+        description={`Explore our portfolio of ${BRAND.STATS.PROJECTS} successful renovation and interior design projects in ${BRAND.CITY}. Kitchen renovations, bathroom makeovers, full home renovations, and commercial spaces.`}
+        keywords={['renovation projects', 'completed projects', 'portfolio', 'home renovation projects', 'interior design projects']}
+      />
       <section 
         className="relative text-primary-foreground py-20"
         style={{

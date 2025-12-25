@@ -1,6 +1,7 @@
 import { MainLayout } from '@/components/layout/MainLayout';
 import { BRAND } from '@/config/brand';
 import { SectionHeader } from '@/components/common/SectionHeader';
+import { SEO } from '@/components/common/SEO';
 import { CheckCircle2, Users, Award, Clock, Ruler, Hammer } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -8,6 +9,11 @@ import { Link } from 'react-router-dom';
 export default function AboutPage() {
   return (
     <MainLayout>
+      <SEO
+        title={`About ${BRAND.COMPANY_NAME} - Premium Home Renovation Experts in ${BRAND.CITY}`}
+        description={`Learn about ${BRAND.COMPANY_NAME} - ${BRAND.STATS.EXPERIENCE} years of experience in premium home renovation and interior design in ${BRAND.CITY}. ${BRAND.STATS.PROJECTS} projects delivered with ${BRAND.STATS.SATISFACTION} customer satisfaction.`}
+        keywords={['about aonereno', 'renovation company', 'interior design company', 'home renovation experts']}
+      />
       {/* Hero / Intro */}
       <section 
         className="relative overflow-hidden text-primary-foreground"

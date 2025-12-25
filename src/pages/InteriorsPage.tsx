@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { MainLayout } from '@/components/layout/MainLayout';
 import { SectionHeader } from '@/components/common/SectionHeader';
 import { ServiceCard } from '@/components/common/ServiceCard';
+import { SEO } from '@/components/common/SEO';
 import { interiorServices } from '@/data/services';
 import { BRAND } from '@/config/brand';
 import { Button } from '@/components/ui/button';
@@ -10,6 +11,11 @@ import { Phone, MessageCircle, Palette, Sparkles, Award } from 'lucide-react';
 export default function InteriorsPage() {
   return (
     <MainLayout>
+      <SEO
+        title={`Bespoke Interior Design Services in ${BRAND.CITY}`}
+        description={`Professional interior design services in ${BRAND.CITY}. Modular kitchen, wardrobes & storage, 3D design visualization, furniture & decor. Personalized designs with premium quality materials. Book free consultation.`}
+        keywords={['interior design', 'modular kitchen', 'wardrobes', '3D design', 'furniture decor', 'interior design services']}
+      />
       {/* Hero */}
       <section className="relative h-[50vh] min-h-[400px]">
         <div className="absolute inset-0">

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { MainLayout } from '@/components/layout/MainLayout';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { SEO } from '@/components/common/SEO';
 import { X, Play } from 'lucide-react';
 import { BRAND } from '@/config/brand';
 
@@ -38,6 +39,11 @@ export default function GalleryPage() {
 
   return (
     <MainLayout>
+      <SEO
+        title={`Project Gallery - Renovation & Interior Design Portfolio in ${BRAND.CITY}`}
+        description={`Explore our stunning portfolio of renovation and interior design projects in ${BRAND.CITY}. View before & after photos, project videos, kitchen renovations, bathroom makeovers, and more.`}
+        keywords={['project gallery', 'renovation portfolio', 'interior design portfolio', 'before after', 'project photos']}
+      />
       <section 
         className="relative text-primary-foreground py-20"
         style={{
