@@ -80,10 +80,15 @@ export function Footer() {
                 <Mail className="h-4 w-4 text-accent" />
                 {BRAND.EMAIL}
               </a>
-              <div className="flex items-start gap-3 text-sm">
+              <a
+                href={BRAND.GOOGLE_MAPS}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 text-sm hover:text-accent transition-colors"
+              >
                 <MapPin className="h-4 w-4 text-accent flex-shrink-0 mt-0.5" />
-                <span className="text-primary-foreground/80">{BRAND.ADDRESS}</span>
-              </div>
+                <span className="text-primary-foreground/80 hover:text-accent">{BRAND.ADDRESS}</span>
+              </a>
             </div>
 
             {/* Social Links */}

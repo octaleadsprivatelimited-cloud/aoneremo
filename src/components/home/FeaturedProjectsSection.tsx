@@ -7,8 +7,19 @@ import { featuredProjects } from '@/data/projects';
 
 export function FeaturedProjectsSection() {
   return (
-    <section className="section-padding bg-background">
-      <div className="container-custom">
+    <section 
+      className="section-padding relative"
+      style={{
+        backgroundImage: 'url(/projects-background.jpeg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-background/80"></div>
+      
+      <div className="container-custom relative z-10">
         <SectionHeader
           badge="Our Portfolio"
           title="Featured Renovation Projects"

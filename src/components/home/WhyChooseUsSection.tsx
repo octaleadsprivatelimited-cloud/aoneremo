@@ -36,8 +36,19 @@ const reasons = [
 
 export function WhyChooseUsSection() {
   return (
-    <section className="section-padding bg-secondary">
-      <div className="container-custom">
+    <section 
+      className="section-padding relative"
+      style={{
+        backgroundImage: 'url(/why-choose-background.jpeg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-background/80"></div>
+      
+      <div className="container-custom relative z-10">
         <SectionHeader
           badge="Why Choose Us"
           title="The ABC Renovations Difference"

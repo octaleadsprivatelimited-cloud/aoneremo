@@ -9,13 +9,24 @@ export default function AboutPage() {
   return (
     <MainLayout>
       {/* Hero / Intro */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary/95 to-slate-900 text-primary-foreground">
+      <section 
+        className="relative overflow-hidden text-primary-foreground"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1920&q=80)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-slate-900/90"></div>
+        
         <div className="absolute inset-0 opacity-20">
           <div className="pointer-events-none absolute -right-40 top-10 h-80 w-80 rounded-full bg-accent/40 blur-3xl" />
           <div className="pointer-events-none absolute -left-40 bottom-0 h-80 w-80 rounded-full bg-copper/40 blur-3xl" />
         </div>
 
-        <div className="container-custom relative py-16 md:py-20 lg:py-24 grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-center">
+        <div className="container-custom relative z-10 py-16 md:py-20 lg:py-24 grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-center">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full bg-black/20 px-4 py-1 text-xs font-medium uppercase tracking-[0.2em]">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />

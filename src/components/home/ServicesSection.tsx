@@ -45,21 +45,8 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section className="section-padding relative overflow-hidden bg-secondary/40">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-secondary/30 via-background to-secondary/30" />
-      
-      {/* Visible decorative elements */}
-      <div className="absolute top-0 right-0 w-1/2 h-full">
-        <div className="absolute top-10 right-10 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute top-40 right-40 w-40 h-40 bg-accent/15 rounded-full blur-2xl" />
-      </div>
-      <div className="absolute bottom-0 left-0 w-1/2 h-full">
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-40 left-40 w-48 h-48 bg-primary/15 rounded-full blur-2xl" />
-      </div>
-      
-      <div className="container-custom relative z-10">
+    <section className="section-padding relative bg-secondary/50">
+      <div className="container-custom">
         <SectionHeader
           badge="Our Services"
           title="Premium Renovation Services"

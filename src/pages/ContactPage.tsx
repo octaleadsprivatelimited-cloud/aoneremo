@@ -45,8 +45,19 @@ export default function ContactPage() {
 
   return (
     <MainLayout>
-      <section className="bg-primary text-primary-foreground py-20">
-        <div className="container-custom text-center">
+      <section 
+        className="relative text-primary-foreground py-20"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1560184897-ae75f418493e?w=1920&q=80)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-primary/80"></div>
+        
+        <div className="container-custom text-center relative z-10">
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-6">Get Your Free Quote</h1>
           <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">
             Ready to transform your space? Contact us for a free consultation and detailed estimate.
@@ -70,14 +81,27 @@ export default function ContactPage() {
                     <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center"><Mail className="h-6 w-6 text-primary" /></div>
                     <div><p className="font-semibold">Email</p><p className="text-muted-foreground">{BRAND.EMAIL}</p></div>
                   </a>
-                  <div className="flex items-start gap-4 p-4 bg-secondary rounded-xl">
+                  <a 
+                    href={BRAND.GOOGLE_MAPS}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-4 p-4 bg-secondary rounded-xl hover:bg-secondary/80 transition-colors"
+                  >
                     <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center"><MapPin className="h-6 w-6 text-primary" /></div>
-                    <div><p className="font-semibold">Office</p><p className="text-muted-foreground">{BRAND.ADDRESS}</p></div>
-                  </div>
+                    <div><p className="font-semibold">Office</p><p className="text-muted-foreground hover:text-primary">{BRAND.ADDRESS}</p></div>
+                  </a>
                 </div>
               </div>
               <Button variant="whatsapp" size="lg" className="w-full" asChild>
                 <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+              </Button>
+              
+              {/* Google Maps Link */}
+              <Button variant="outline" size="lg" className="w-full" asChild>
+                <a href={BRAND.GOOGLE_MAPS} target="_blank" rel="noopener noreferrer">
+                  <MapPin className="h-5 w-5 mr-2" />
+                  View on Google Maps
+                </a>
               </Button>
             </div>
 
@@ -93,6 +117,39 @@ export default function ContactPage() {
               <div><label className="block text-sm font-medium mb-2">Message</label><textarea name="message" rows={4} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary" /></div>
               <Button type="submit" variant="hero" size="lg" className="w-full">Submit Enquiry <Send className="h-5 w-5" /></Button>
             </form>
+          </div>
+
+          {/* Google Maps Section */}
+          <div className="mt-12">
+            <h2 className="font-display text-2xl font-bold mb-6 text-center">Find Us on Google Maps</h2>
+            <div className="bg-secondary rounded-2xl overflow-hidden shadow-medium">
+              <a 
+                href={BRAND.GOOGLE_MAPS}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative aspect-video w-full group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                  <div className="text-center p-8">
+                    <MapPin className="h-16 w-16 text-primary mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                    <p className="font-semibold text-lg mb-2">Click to view location</p>
+                    <p className="text-muted-foreground text-sm">{BRAND.ADDRESS}</p>
+                  </div>
+                </div>
+                <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors"></div>
+              </a>
+              <div className="p-4 bg-card border-t border-border">
+                <a 
+                  href={BRAND.GOOGLE_MAPS}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-accent font-semibold text-sm flex items-center gap-2"
+                >
+                  <MapPin className="h-4 w-4" />
+                  Open in Google Maps
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

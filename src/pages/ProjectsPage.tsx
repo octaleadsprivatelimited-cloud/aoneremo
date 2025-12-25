@@ -6,8 +6,19 @@ import { BRAND } from '@/config/brand';
 export default function ProjectsPage() {
   return (
     <MainLayout>
-      <section className="bg-primary text-primary-foreground py-20">
-        <div className="container-custom text-center">
+      <section 
+        className="relative text-primary-foreground py-20"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-primary/80"></div>
+        
+        <div className="container-custom text-center relative z-10">
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-6">Our Projects</h1>
           <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">
             Explore our portfolio of successful renovation projects across {BRAND.CITY}.

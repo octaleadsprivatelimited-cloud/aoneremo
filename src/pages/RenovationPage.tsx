@@ -9,8 +9,27 @@ export default function RenovationPage() {
   return (
     <MainLayout>
       {/* Hero */}
-      <section className="bg-primary text-primary-foreground py-20">
-        <div className="container-custom text-center">
+      <section 
+        className="relative text-primary-foreground py-20"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-primary/80"></div>
+        
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-1/3 h-full opacity-20">
+          <div className="absolute top-10 right-10 w-64 h-64 bg-accent/30 rounded-full blur-3xl" />
+        </div>
+        <div className="absolute bottom-0 left-0 w-1/3 h-full opacity-20">
+          <div className="absolute bottom-10 left-10 w-64 h-64 bg-accent/30 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="container-custom text-center relative z-10">
           <span className="inline-block px-4 py-2 bg-accent/20 text-accent text-sm font-semibold rounded-full mb-6">
             Renovation Services
           </span>

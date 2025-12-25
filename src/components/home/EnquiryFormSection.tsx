@@ -77,8 +77,19 @@ export function EnquiryFormSection() {
   };
 
   return (
-    <section className="section-padding bg-background">
-      <div className="container-custom">
+    <section 
+      className="section-padding relative"
+      style={{
+        backgroundImage: 'url(/enquiry-background.jpeg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-background/80"></div>
+      
+      <div className="container-custom relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div>

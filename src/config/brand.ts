@@ -7,6 +7,7 @@ export const BRAND = {
   WHATSAPP: "+91 81066 29333",
   EMAIL: "info@aonereno.com",
   ADDRESS: "Plot 42, Jubilee Hills, Road No. 5, Hyderabad, Telangana 500033",
+  GOOGLE_MAPS: "https://maps.app.goo.gl/5RFrwLR7XHLDiwbw7",
   SOCIAL: {
     FACEBOOK: "https://facebook.com/abcrenovations",
     INSTAGRAM: "https://instagram.com/abcrenovations",

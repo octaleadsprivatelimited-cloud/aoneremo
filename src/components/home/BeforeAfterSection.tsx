@@ -27,7 +27,7 @@ const beforeAfterProjects = [
 
 export function BeforeAfterSection() {
   return (
-    <section className="section-padding bg-secondary">
+    <section className="section-padding relative bg-secondary/50">
       <div className="container-custom">
         <SectionHeader
           badge="Before & After"

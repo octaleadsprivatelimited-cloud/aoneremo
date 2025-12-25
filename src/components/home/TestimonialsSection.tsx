@@ -18,8 +18,19 @@ export function TestimonialsSection() {
   };
 
   return (
-    <section className="section-padding bg-background overflow-hidden">
-      <div className="container-custom">
+    <section 
+      className="section-padding relative overflow-hidden"
+      style={{
+        backgroundImage: 'url(/testimonials-background.jpeg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-background/80"></div>
+      
+      <div className="container-custom relative z-10">
         <div className="flex items-end justify-between mb-12">
           <SectionHeader
             badge="Testimonials"
