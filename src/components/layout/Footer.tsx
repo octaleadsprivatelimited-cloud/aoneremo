@@ -10,6 +10,7 @@ const quickLinks = [
   { name: 'Before & After', href: '/before-after' },
   { name: 'Gallery', href: '/gallery' },
   { name: 'Contact Us', href: '/contact' },
+  { name: 'Sitemap', href: 'https://aonereno.com/sitemap.xml', external: true },
 ];
 
 const renovationLinks = [
@@ -154,12 +155,23 @@ export function Footer() {
             )}>
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="block text-sm text-primary-foreground/80 hover:text-accent transition-colors py-0.5"
-                  >
-                    {link.name}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-sm text-primary-foreground/80 hover:text-accent transition-colors py-0.5"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="block text-sm text-primary-foreground/80 hover:text-accent transition-colors py-0.5"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

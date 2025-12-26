@@ -1,6 +1,10 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+  
+  # Allow sitemap.xml and robots.txt to be served directly
+  RewriteRule ^(sitemap\.xml|robots\.txt)$ - [L]
+  
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
