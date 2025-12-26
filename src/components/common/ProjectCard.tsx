@@ -27,7 +27,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         <div className="absolute inset-0 bg-gradient-overlay opacity-60" />
         
         {/* Category Badge */}
-        <div className="absolute top-4 left-4 px-3 py-1.5 bg-accent text-accent-foreground text-xs font-semibold rounded-full">
+        <div className="absolute top-4 right-4 px-3 py-1.5 bg-accent text-accent-foreground text-xs font-semibold rounded-full">
           {project.category}
         </div>
       </div>

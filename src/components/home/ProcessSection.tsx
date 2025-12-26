@@ -63,14 +63,14 @@ export function ProcessSection() {
         />
 
         <div className="relative">
-          {/* Connection Line */}
-          <div className="absolute top-24 left-8 right-8 h-0.5 bg-border hidden lg:block" />
+          {/* Connection Line - Hidden for 4 column layout */}
+          <div className="absolute top-24 left-8 right-8 h-0.5 bg-border hidden lg:hidden" />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((item, index) => (
               <div
                 key={item.title}
-                className={`relative bg-background rounded-xl p-8 shadow-soft animate-fade-up animation-delay-${(index % 3) * 100 + 100}`}
+                className={`relative bg-background rounded-xl p-8 shadow-soft animate-fade-up animation-delay-${(index % 4) * 100 + 100}`}
               >
                 {/* Step Number */}
                 <div className="absolute -top-4 left-8 w-12 h-12 bg-accent text-accent-foreground rounded-full flex items-center justify-center font-display font-bold text-lg shadow-medium">

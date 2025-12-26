@@ -27,12 +27,12 @@ export function FeaturedProjectsSection() {
           className="mb-12"
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredProjects.slice(0, 6).map((project, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {featuredProjects.slice(0, 4).map((project, index) => (
             <ProjectCard
               key={project.id}
               project={project}
-              className={`animate-fade-up animation-delay-${(index % 3) * 100 + 100}`}
+              className={`animate-fade-up animation-delay-${(index % 4) * 100 + 100}`}
             />
           ))}
         </div>

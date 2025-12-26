@@ -123,6 +123,8 @@ export default function ServiceDetailPage() {
             src={service.image} 
             alt={service.title}
             className="w-full h-full object-cover"
+            loading="eager"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/60 to-primary/30" />
         </div>

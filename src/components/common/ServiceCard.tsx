@@ -15,16 +15,18 @@ export function ServiceCard({ title, description, image, href, className }: Serv
     <Link
       to={href}
       className={cn(
-        'group relative overflow-hidden rounded-xl bg-card card-hover block',
+        'group relative overflow-hidden rounded-xl bg-card card-hover block w-full h-full',
         className
       )}
     >
       {/* Image */}
-      <div className="aspect-[4/3] overflow-hidden">
+      <div className="aspect-[4/3] overflow-hidden bg-gray-100">
         <img
           src={image}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          loading="eager"
+          decoding="async"
         />
       </div>
 

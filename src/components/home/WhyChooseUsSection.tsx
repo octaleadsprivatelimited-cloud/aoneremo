@@ -56,11 +56,11 @@ export function WhyChooseUsSection() {
           className="mb-12"
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {reasons.map((reason, index) => (
             <div
               key={reason.title}
-              className={`bg-background rounded-xl p-8 shadow-soft card-hover animate-fade-up animation-delay-${(index % 3) * 100 + 100}`}
+              className={`bg-background rounded-xl p-8 shadow-soft card-hover animate-fade-up animation-delay-${(index % 4) * 100 + 100}`}
             >
               <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
                 <reason.icon className="h-7 w-7 text-accent" />

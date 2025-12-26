@@ -6,13 +6,12 @@ import path from "path";
 export default defineConfig(() => ({
   server: {
     host: "localhost",
-    port: 8080,
+    port: 8081,
     open: true,
-    // Enable SPA fallback for development
-    strictPort: false,
+    strictPort: true,
   },
   preview: {
-    port: 8080,
+    port: 8081,
     // Enable SPA fallback for preview
     strictPort: false,
   },

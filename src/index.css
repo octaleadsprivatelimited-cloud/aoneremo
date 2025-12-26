@@ -274,3 +274,20 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.5);
 }
+
+/* Image rendering optimization */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+/* For photos, use auto rendering */
+img[src$=".jpg"],
+img[src$=".jpeg"],
+img[src$=".png"] {
+  image-rendering: auto;
+  -webkit-font-smoothing: subpixel-antialiased;
+}

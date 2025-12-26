@@ -54,13 +54,14 @@ export function ServicesSection() {
           className="mb-12"
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
           {services.map((service, index) => (
-            <ServiceCard
-              key={service.title}
-              {...service}
-              className={`animate-fade-up animation-delay-${(index % 3) * 100 + 100}`}
-            />
+            <div key={service.title} className="min-w-0">
+              <ServiceCard
+                {...service}
+                className={`animate-fade-up animation-delay-${(index % 4) * 100 + 100} w-full`}
+              />
+            </div>
           ))}
         </div>
 

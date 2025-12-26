@@ -1,15 +1,14 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
+import { MapPin, Phone, Mail, Facebook, Instagram, Youtube, Linkedin, ChevronDown } from 'lucide-react';
 import { BRAND } from '@/config/brand';
+import { cn } from '@/lib/utils';
 
 const quickLinks = [
   { name: 'About Us', href: '/about' },
   { name: 'Our Projects', href: '/projects' },
   { name: 'Before & After', href: '/before-after' },
   { name: 'Gallery', href: '/gallery' },
-  { name: 'Testimonials', href: '/testimonials' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'FAQs', href: '/faq' },
   { name: 'Contact Us', href: '/contact' },
 ];
 
@@ -32,6 +31,11 @@ const interiorLinks = [
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  const toggleDropdown = (menu: string) => {
+    setOpenDropdown(openDropdown === menu ? null : menu);
+  };
 
   return (
     <footer 
@@ -47,25 +51,25 @@ export function Footer() {
       <div className="absolute inset-0 bg-primary/60"></div>
       
       {/* Main Footer */}
-      <div className="container-custom py-10 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container-custom py-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Company Info */}
-          <div className="space-y-4">
+          <div className="space-y-1.5">
             <div>
-              <div className="mb-3">
+              <div className="mb-0.5">
                 <img 
                   src="/logo.png" 
                   alt={BRAND.COMPANY_NAME}
-                  className="h-16 w-auto object-contain"
+                  className="h-28 w-auto object-contain"
                 />
               </div>
-              <p className="text-primary-foreground/80 text-sm leading-relaxed">
+              <p className="text-primary-foreground/80 text-xs leading-tight">
                 {BRAND.TAGLINE}. Premium renovation and interior design services in {BRAND.CITY} with 15+ years of experience.
               </p>
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-2">
+            <div className="space-y-1.5">
               <a
                 href={`tel:${BRAND.PHONE}`}
                 className="flex items-center gap-3 text-sm hover:text-accent transition-colors"
@@ -92,51 +96,67 @@ export function Footer() {
             </div>
 
             {/* Social Links */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <a
                 href={BRAND.SOCIAL.FACEBOOK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
+                className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
               >
-                <Facebook className="h-5 w-5" />
+                <Facebook className="h-4 w-4" />
               </a>
               <a
                 href={BRAND.SOCIAL.INSTAGRAM}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
+                className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
               >
-                <Instagram className="h-5 w-5" />
+                <Instagram className="h-4 w-4" />
               </a>
               <a
                 href={BRAND.SOCIAL.YOUTUBE}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
+                className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
               >
-                <Youtube className="h-5 w-5" />
+                <Youtube className="h-4 w-4" />
               </a>
               <a
                 href={BRAND.SOCIAL.LINKEDIN}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
+                className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
               >
-                <Linkedin className="h-5 w-5" />
+                <Linkedin className="h-4 w-4" />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+            <button
+              onClick={() => toggleDropdown('quickLinks')}
+              className="md:hidden w-full flex items-center justify-between font-display font-semibold text-base mb-3 text-primary-foreground"
+            >
+              Quick Links
+              <ChevronDown
+                className={cn(
+                  "h-4 w-4 transition-transform duration-200",
+                  openDropdown === 'quickLinks' && "rotate-180"
+                )}
+              />
+            </button>
+            <h4 className="hidden md:block font-display font-semibold text-base mb-3">Quick Links</h4>
+            <ul className={cn(
+              "space-y-1 overflow-hidden transition-all duration-300",
+              "md:block",
+              openDropdown === 'quickLinks' ? "max-h-96" : "max-h-0 md:max-h-none"
+            )}>
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-sm text-primary-foreground/80 hover:text-accent transition-colors"
+                    className="block text-sm text-primary-foreground/80 hover:text-accent transition-colors py-0.5"
                   >
                     {link.name}
                   </Link>
@@ -147,13 +167,29 @@ export function Footer() {
 
           {/* Renovation Services */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Renovation Services</h4>
-            <ul className="space-y-2">
+            <button
+              onClick={() => toggleDropdown('renovation')}
+              className="md:hidden w-full flex items-center justify-between font-display font-semibold text-base mb-3 text-primary-foreground"
+            >
+              Renovation Services
+              <ChevronDown
+                className={cn(
+                  "h-4 w-4 transition-transform duration-200",
+                  openDropdown === 'renovation' && "rotate-180"
+                )}
+              />
+            </button>
+            <h4 className="hidden md:block font-display font-semibold text-base mb-3">Renovation Services</h4>
+            <ul className={cn(
+              "space-y-1 overflow-hidden transition-all duration-300",
+              "md:block",
+              openDropdown === 'renovation' ? "max-h-96" : "max-h-0 md:max-h-none"
+            )}>
               {renovationLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-sm text-primary-foreground/80 hover:text-accent transition-colors"
+                    className="block text-sm text-primary-foreground/80 hover:text-accent transition-colors py-0.5"
                   >
                     {link.name}
                   </Link>
@@ -164,13 +200,29 @@ export function Footer() {
 
           {/* Interior Services */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Interior Design</h4>
-            <ul className="space-y-2">
+            <button
+              onClick={() => toggleDropdown('interior')}
+              className="md:hidden w-full flex items-center justify-between font-display font-semibold text-base mb-3 text-primary-foreground"
+            >
+              Interior Design
+              <ChevronDown
+                className={cn(
+                  "h-4 w-4 transition-transform duration-200",
+                  openDropdown === 'interior' && "rotate-180"
+                )}
+              />
+            </button>
+            <h4 className="hidden md:block font-display font-semibold text-base mb-3">Interior Design</h4>
+            <ul className={cn(
+              "space-y-1 overflow-hidden transition-all duration-300",
+              "md:block",
+              openDropdown === 'interior' ? "max-h-96" : "max-h-0 md:max-h-none"
+            )}>
               {interiorLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-sm text-primary-foreground/80 hover:text-accent transition-colors"
+                    className="block text-sm text-primary-foreground/80 hover:text-accent transition-colors py-0.5"
                   >
                     {link.name}
                   </Link>
@@ -179,9 +231,18 @@ export function Footer() {
             </ul>
 
             {/* Service Area */}
-            <div className="mt-6">
-              <h5 className="font-semibold mb-2">Service Areas</h5>
-              <p className="text-sm text-primary-foreground/80">
+            <div className="mt-4 hidden md:block">
+              <h5 className="font-semibold text-sm mb-1.5">Service Areas</h5>
+              <p className="text-xs text-primary-foreground/80">
+                Jubilee Hills, Banjara Hills, Gachibowli, Madhapur, Kondapur, Hitech City, Kukatpally & all of Hyderabad
+              </p>
+            </div>
+            <div className={cn(
+              "mt-3 overflow-hidden transition-all duration-300 md:hidden",
+              openDropdown === 'interior' ? "max-h-96" : "max-h-0"
+            )}>
+              <h5 className="font-semibold text-sm mb-1.5">Service Areas</h5>
+              <p className="text-xs text-primary-foreground/80">
                 Jubilee Hills, Banjara Hills, Gachibowli, Madhapur, Kondapur, Hitech City, Kukatpally & all of Hyderabad
               </p>
             </div>
@@ -191,8 +252,8 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-primary-foreground/10 relative z-10">
-        <div className="container-custom py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-primary-foreground/70">
+        <div className="container-custom py-3 flex justify-center items-center">
+          <p className="text-sm text-primary-foreground/70 text-center">
             © {currentYear} {BRAND.COMPANY_NAME}. All rights reserved. | Developed by{' '}
             <a 
               href="https://octaleads.com" 
@@ -203,10 +264,6 @@ export function Footer() {
               Octaleads Private Limited
             </a>
           </p>
-          <div className="flex items-center gap-6 text-sm text-primary-foreground/70">
-            <Link to="/privacy" className="hover:text-accent transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-accent transition-colors">Terms of Service</Link>
-          </div>
         </div>
       </div>
     </footer>
