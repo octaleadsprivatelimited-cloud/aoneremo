@@ -17,7 +17,7 @@ export function SEO({
   title,
   description,
   keywords = [],
-  image = `${BRAND.WEBSITE}/logo.png`,
+  image = `https://aonereno.com/logo.png`,
   url,
   type = 'website',
   noindex = false,

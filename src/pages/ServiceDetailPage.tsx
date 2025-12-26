@@ -113,7 +113,6 @@ export default function ServiceDetailPage() {
         title={`${service.title} Services in ${BRAND.CITY} | ${BRAND.COMPANY_NAME}`}
         description={service.shortDescription || service.description}
         keywords={[service.title.toLowerCase(), 'renovation', 'interior design', BRAND.CITY.toLowerCase()]}
-        image={service.image}
         structuredData={structuredData}
       />
       {/* Hero Section */}

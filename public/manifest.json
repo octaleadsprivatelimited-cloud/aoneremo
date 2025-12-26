@@ -1,0 +1,25 @@
+{
+  "name": "Aonereno - Premium Home Renovation & Interior Design",
+  "short_name": "Aonereno",
+  "description": "Premium home renovation and interior design services in Hyderabad",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ea580c",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://aonereno.com/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://aonereno.com/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
+

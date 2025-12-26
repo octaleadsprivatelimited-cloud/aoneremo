@@ -10,7 +10,7 @@ const quickLinks = [
   { name: 'Before & After', href: '/before-after' },
   { name: 'Gallery', href: '/gallery' },
   { name: 'Contact Us', href: '/contact' },
-  { name: 'Sitemap', href: 'https://aonereno.com/sitemap.xml', external: true },
+  { name: 'Sitemap', href: '/sitemap.xml', external: true },
 ];
 
 const renovationLinks = [
