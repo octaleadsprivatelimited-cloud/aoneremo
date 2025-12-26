@@ -116,6 +116,9 @@ export default function GalleryPage() {
                   src={image}
                   alt={`Gallery image ${index + 1}`}
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority={index < 4 ? "high" : "low"}
                   onError={(e) => {
                     // Hide broken images
                     (e.target as HTMLImageElement).style.display = 'none';

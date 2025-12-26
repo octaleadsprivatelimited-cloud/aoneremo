@@ -63,6 +63,9 @@ export function BeforeAfterSlider({
         alt={afterLabel}
         className="w-full h-full object-cover"
         draggable={false}
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
       />
 
       {/* Before Image (Overlay) */}
@@ -76,6 +79,9 @@ export function BeforeAfterSlider({
           className="w-full h-full object-cover"
           style={{ width: containerRef.current?.offsetWidth || '100%' }}
           draggable={false}
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
         />
       </div>
 

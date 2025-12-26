@@ -23,6 +23,9 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
           src={project.afterImage}
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
         />
         <div className="absolute inset-0 bg-gradient-overlay opacity-60" />
         

@@ -22,11 +22,24 @@ export default defineConfig(() => ({
     },
   },
   build: {
-    // Ensure proper handling of SPA routes in production
+    // Optimize build for better performance
     rollupOptions: {
       output: {
-        manualChunks: undefined,
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'ui-vendor': ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-accordion'],
+        },
       },
     },
+    // Enable minification and compression
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+    // Optimize chunk size
+    chunkSizeWarningLimit: 1000,
   },
 }));
