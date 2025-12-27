@@ -22,21 +22,7 @@ export default defineConfig(() => ({
     },
   },
   build: {
-    // Optimize build for better performance
-    rollupOptions: {
-      output: {
-        manualChunks: (id) => {
-          // Simplified chunking strategy - split only react/vendor to prevent loading issues
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
-              return 'react-vendor';
-            }
-            // All other vendor code in one chunk
-            return 'vendor';
-          }
-        },
-      },
-    },
+    // Let Vite handle chunking automatically (no manual chunking)
     // Enable minification (esbuild is faster and doesn't require additional dependencies)
     minify: 'esbuild',
     // Optimize chunk size
@@ -47,5 +33,7 @@ export default defineConfig(() => ({
     cssCodeSplit: false,
     // Optimize asset inlining threshold
     assetsInlineLimit: 4096,
+    // Ensure consistent build output
+    outDir: 'dist',
   },
 }));

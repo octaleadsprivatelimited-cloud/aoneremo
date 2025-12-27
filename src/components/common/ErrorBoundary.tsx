@@ -1,7 +1,4 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
-import { Button } from '@/components/ui/button';
-import { Home, RefreshCw } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 interface Props {
   children: ReactNode;
@@ -30,33 +27,101 @@ export class ErrorBoundary extends Component<Props, State> {
     window.location.reload();
   };
 
+  private handleGoHome = () => {
+    window.location.href = '/';
+  };
+
   public render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-background flex items-center justify-center px-4">
-          <div className="max-w-md w-full bg-card border border-border rounded-2xl shadow-lg p-8 text-center space-y-4">
+        <div style={{
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '20px',
+          backgroundColor: '#ffffff',
+          fontFamily: 'system-ui, -apple-system, sans-serif'
+        }}>
+          <div style={{
+            maxWidth: '500px',
+            width: '100%',
+            backgroundColor: '#ffffff',
+            border: '1px solid #e5e7eb',
+            borderRadius: '16px',
+            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+            padding: '32px',
+            textAlign: 'center'
+          }}>
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold mb-2">Something went wrong</h1>
-              <p className="text-sm md:text-base text-muted-foreground mb-4">
+              <h1 style={{
+                fontSize: '24px',
+                fontWeight: 'bold',
+                marginBottom: '8px',
+                color: '#111827'
+              }}>
+                Something went wrong
+              </h1>
+              <p style={{
+                fontSize: '16px',
+                color: '#6b7280',
+                marginBottom: '24px'
+              }}>
                 We're sorry, but something unexpected happened. Please try refreshing the page.
               </p>
               {this.state.error && process.env.NODE_ENV === 'development' && (
-                <pre className="text-xs text-muted-foreground bg-muted p-4 rounded mt-4 text-left overflow-auto max-h-40">
+                <pre style={{
+                  fontSize: '12px',
+                  color: '#6b7280',
+                  backgroundColor: '#f3f4f6',
+                  padding: '16px',
+                  borderRadius: '8px',
+                  marginTop: '16px',
+                  textAlign: 'left',
+                  overflow: 'auto',
+                  maxHeight: '160px'
+                }}>
                   {this.state.error.toString()}
                 </pre>
               )}
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button variant="default" onClick={this.handleReload} className="w-full sm:w-auto">
-                <RefreshCw className="h-4 w-4 mr-2" />
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '12px',
+              justifyContent: 'center',
+              marginTop: '24px'
+            }}>
+              <button
+                onClick={this.handleReload}
+                style={{
+                  padding: '12px 24px',
+                  backgroundColor: '#ea580c',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  fontSize: '16px',
+                  fontWeight: '500'
+                }}
+              >
                 Reload Page
-              </Button>
-              <Button variant="outline" asChild className="w-full sm:w-auto">
-                <Link to="/">
-                  <Home className="h-4 w-4 mr-2" />
-                  Go Home
-                </Link>
-              </Button>
+              </button>
+              <button
+                onClick={this.handleGoHome}
+                style={{
+                  padding: '12px 24px',
+                  backgroundColor: 'transparent',
+                  color: '#374151',
+                  border: '1px solid #d1d5db',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  fontSize: '16px',
+                  fontWeight: '500'
+                }}
+              >
+                Go Home
+              </button>
             </div>
           </div>
         </div>
