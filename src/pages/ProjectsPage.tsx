@@ -15,7 +15,7 @@ export default function ProjectsPage() {
       <section 
         className="relative text-primary-foreground py-20"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80)',
+          backgroundImage: 'url(https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1280&q=75&auto=format)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

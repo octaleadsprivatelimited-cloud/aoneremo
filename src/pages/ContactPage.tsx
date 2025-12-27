@@ -75,7 +75,7 @@ export default function ContactPage() {
       <section 
         className="relative text-primary-foreground py-20"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1560184897-ae75f418493e?w=1920&q=80)',
+          backgroundImage: 'url(https://images.unsplash.com/photo-1560184897-ae75f418493e?w=1280&q=75&auto=format)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

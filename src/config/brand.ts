@@ -1,6 +1,6 @@
 // Brand Configuration - Update these values for different clients
 export const BRAND = {
-  COMPANY_NAME: "Aonereno",
+  COMPANY_NAME: "aonereno",
   TAGLINE: "Transforming Homes with Premium Renovation Expertise",
   CITY: "Hyderabad",
   PHONE: "+91 81066 29333",

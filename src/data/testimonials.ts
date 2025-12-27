@@ -16,7 +16,7 @@ export const testimonials: Testimonial[] = [
     location: 'Jubilee Hills',
     projectType: 'Full Home Renovation',
     rating: 5,
-    text: 'ABC Renovations transformed our 15-year-old apartment into a modern masterpiece. The attention to detail and quality of work exceeded our expectations. Their team maintained transparency throughout the project with daily updates.',
+    text: 'aonereno transformed our 15-year-old apartment into a modern masterpiece. The attention to detail and quality of work exceeded our expectations. Their team maintained transparency throughout the project with daily updates.',
     image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&q=80',
   },
   {
@@ -52,7 +52,7 @@ export const testimonials: Testimonial[] = [
     location: 'Banjara Hills',
     projectType: 'Living Room Renovation',
     rating: 5,
-    text: 'The living room is now the heart of our home. Every guest compliments the design. ABC Renovations understood our vision perfectly and executed it flawlessly.',
+    text: 'The living room is now the heart of our home. Every guest compliments the design. aonereno understood our vision perfectly and executed it flawlessly.',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80',
   },
   {
@@ -61,7 +61,7 @@ export const testimonials: Testimonial[] = [
     location: 'Tolichowki',
     projectType: 'Full Home Renovation',
     rating: 5,
-    text: 'Best decision we made was choosing ABC Renovations. They handled our entire 3BHK renovation professionally. The quality of materials and workmanship is exceptional.',
+    text: 'Best decision we made was choosing aonereno. They handled our entire 3BHK renovation professionally. The quality of materials and workmanship is exceptional.',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80',
   },
 ];

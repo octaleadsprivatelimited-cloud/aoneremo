@@ -52,7 +52,7 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80',
     ],
     testimonial: {
-      text: 'ABC Renovations transformed our 15-year-old apartment into a modern masterpiece. The attention to detail and quality of work exceeded our expectations. Highly recommend!',
+      text: 'aonereno transformed our 15-year-old apartment into a modern masterpiece. The attention to detail and quality of work exceeded our expectations. Highly recommend!',
       author: 'Ramesh & Priya Sharma',
     },
     featured: true,
@@ -187,7 +187,7 @@ export const projects: Project[] = [
     afterImage: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80',
     gallery: [],
     testimonial: {
-      text: 'The living room is now the heart of our home. Every guest compliments the design. ABC Renovations understood our vision perfectly.',
+      text: 'The living room is now the heart of our home. Every guest compliments the design. aonereno understood our vision perfectly.',
       author: 'Neha Kapoor',
     },
     featured: false,

@@ -26,7 +26,7 @@ export default function BeforeAfterPage() {
       <section 
         className="relative text-primary-foreground py-20"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80)',
+          backgroundImage: 'url(https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1280&q=75&auto=format)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

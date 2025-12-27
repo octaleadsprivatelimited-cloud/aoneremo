@@ -1,5 +1,6 @@
 import { Shield, Palette, Clock, Users, Award, Headphones } from 'lucide-react';
 import { SectionHeader } from '@/components/common/SectionHeader';
+import { BRAND } from '@/config/brand';
 
 const reasons = [
   {
@@ -51,7 +52,7 @@ export function WhyChooseUsSection() {
       <div className="container-custom relative z-10">
         <SectionHeader
           badge="Why Choose Us"
-          title="The ABC Renovations Difference"
+          title={`The ${BRAND.COMPANY_NAME} Difference`}
           subtitle="We're not just contractors - we're your partners in creating the perfect space. Here's why hundreds of families trust us with their homes."
           className="mb-12"
         />

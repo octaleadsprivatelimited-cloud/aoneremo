@@ -47,7 +47,7 @@ export default function GalleryPage() {
       <section 
         className="relative text-primary-foreground py-20"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1920&q=80)',
+          backgroundImage: 'url(https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1280&q=75&auto=format)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

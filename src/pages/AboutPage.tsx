@@ -18,7 +18,7 @@ export default function AboutPage() {
       <section 
         className="relative overflow-hidden text-primary-foreground"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1920&q=80)',
+          backgroundImage: 'url(https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1280&q=75&auto=format)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

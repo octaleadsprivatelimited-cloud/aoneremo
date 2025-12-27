@@ -20,7 +20,7 @@ export default function InteriorsPage() {
       <section className="relative h-[50vh] min-h-[400px]">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80" 
+            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1280&q=75&auto=format" 
             alt="Interior Design"
             className="w-full h-full object-cover"
           />

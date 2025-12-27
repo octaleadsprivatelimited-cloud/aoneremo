@@ -25,9 +25,20 @@ export default defineConfig(() => ({
     // Optimize build for better performance
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'ui-vendor': ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-accordion'],
+        manualChunks: (id) => {
+          // Split node_modules into separate chunks
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+              return 'react-vendor';
+            }
+            if (id.includes('@radix-ui')) {
+              return 'ui-vendor';
+            }
+            if (id.includes('lucide-react')) {
+              return 'icons';
+            }
+            return 'vendor';
+          }
         },
       },
     },
@@ -35,5 +46,11 @@ export default defineConfig(() => ({
     minify: 'esbuild',
     // Optimize chunk size
     chunkSizeWarningLimit: 1000,
+    // Enable source maps in production for debugging (optional, can remove for smaller bundle)
+    sourcemap: false,
+    // Enable CSS code splitting
+    cssCodeSplit: true,
+    // Optimize asset inlining threshold
+    assetsInlineLimit: 4096,
   },
 }));
