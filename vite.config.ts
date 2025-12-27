@@ -26,17 +26,12 @@ export default defineConfig(() => ({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // Split node_modules into separate chunks
+          // Simplified chunking strategy - split only react/vendor to prevent loading issues
           if (id.includes('node_modules')) {
             if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
               return 'react-vendor';
             }
-            if (id.includes('@radix-ui')) {
-              return 'ui-vendor';
-            }
-            if (id.includes('lucide-react')) {
-              return 'icons';
-            }
+            // All other vendor code in one chunk
             return 'vendor';
           }
         },
@@ -48,8 +43,8 @@ export default defineConfig(() => ({
     chunkSizeWarningLimit: 1000,
     // Enable source maps in production for debugging (optional, can remove for smaller bundle)
     sourcemap: false,
-    // Enable CSS code splitting
-    cssCodeSplit: true,
+    // Disable CSS code splitting to prevent loading issues
+    cssCodeSplit: false,
     // Optimize asset inlining threshold
     assetsInlineLimit: 4096,
   },
